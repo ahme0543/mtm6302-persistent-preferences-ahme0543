@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My List</title>
+  <title>Persistent Preferances </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <h1>My List</h1>
-    <ul class="list-group" id="myList"></ul>
+    <ul class="list-group" id="myList">
+      
+    </ul>
+   
     <div class="card my-3">
       <div class="card-body">
         <h5 class="card-title">Preferences</h5>
         <form>
+
           <div class="form-group">
             <label for="themeSelect">Theme</label>
             <select class="form-control" id="themeSelect">
@@ -23,12 +28,13 @@
               <option value="colorful">Colorful</option>
             </select>
           </div>
+
           <div class="form-group">
             <label for="listStyleSelect">List Style</label>
             <select class="form-control" id="listStyleSelect">
-              <option value="list-group">Standard</option>
-              <option value="list-group-flush">Flush</option>
-              <option value="list-group-item-action">Actionable</option>
+              <li><option value="Standard">Standard</option></li>
+              <option value="Flush">Flush</option>
+              <option value="Actionable">Actionable</option>
             </select>
           </div>
         </form>

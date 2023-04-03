@@ -4,20 +4,18 @@ const themeSelect = document.getElementById('themeSelect');
 const listStyleSelect = document.getElementById('listStyleSelect');
 
 // Set default values
-let theme = 'light';
+let theme = 'themeSelect';
 let listStyle = 'list-group';
 
 // Load saved preferences, if any
 if (localStorage.getItem('theme')) {
-  theme = localStorage.getItem('theme');
-  applyTheme(theme);
-  themeSelect.value = theme;
+  applyTheme(localStorage.getItem('theme'));
+  themeSelect.value = localStorage.getItem('theme');
 }
 
 if (localStorage.getItem('listStyle')) {
-  listStyle = localStorage.getItem('listStyle');
-  applyListStyle(listStyle);
-  listStyleSelect.value = listStyle;
+  applyListStyle(localStorage.getItem('listStyle'));
+  listStyleSelect.value = localStorage.getItem('listStyle');
 }
 
 // Add event listeners
@@ -33,13 +31,26 @@ listStyleSelect.addEventListener('change', () => {
   localStorage.setItem('listStyle', listStyle);
 });
 
-// Add items to the list
-for (let i = 1; i <= 5; i++) {
-  const li = document.createElement('li');
-  li.classList.add('list-group-item');
-  li.textContent = `Item ${i}`;
-  myList.appendChild(li);
-}
+    // Additional content for each item
+    const additionalContent = [
+      ' - groccery shopping',
+      ' - making dinner',
+      ' - laundry',
+      ' - homework',
+      ' - cleaning',
+    ];
+
+    // Add items to the list
+    for (let i = 0; i < additionalContent.length; i++) {
+      const li = document.createElement('li');
+      const span = document.createElement('span');
+      span.textContent = additionalContent[i];
+      li.classList.add('list-group-item');
+      li.textContent = `Item ${i+1}`;
+      li.appendChild(span);
+      myList.appendChild(li);
+    }
+
 
 // Apply the selected theme
 function applyTheme(theme) {
@@ -50,7 +61,7 @@ function applyTheme(theme) {
 // Apply the selected list style
 function applyListStyle(listStyle) {
   myList.className = '';
-  myList.classList.add(listStyle);
+  myList.classList.add(`listStyle-${listStyle}`);
 }
 
 
